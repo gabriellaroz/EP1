@@ -18,10 +18,10 @@ class GerenciadorDeUsuario{
 
     private: 
 
-    Aluno** alunos = nullptr; 
-    Professor ** professores = nullptr; 
-    int quantidadeDeAlunos = 0;
-    int quantidadeDeProfessores = 0;
-    int maximoDeUsuarios = 0;
+    Aluno** alunos;
+    Professor ** professores; 
+    int quantidadeDeAlunos;
+    int quantidadeDeProfessores;
+    int maximoDeUsuarios;
 }
 
