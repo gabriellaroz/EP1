@@ -2,7 +2,8 @@
 #define DATA_H
 
 class Data {
-public:
+
+    public:
     Data(int mes, int ano);
     virtual ~Data();
 
