@@ -4,6 +4,8 @@
 #define BOLSA_USP 700.0
 
 class Bolsa {
+private:
+    int 
 public:
     Bolsa(Data* inicio, Data* fim, Professor* responsavel);
     virtual ~Professor();
@@ -15,6 +17,6 @@ public:
     bool estaDentroDoPeriodo(Data* d);
 
     double getValor(Data* data);
-private:
+    
 }
 #endif
