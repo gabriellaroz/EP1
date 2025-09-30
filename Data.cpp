@@ -3,9 +3,10 @@
 
 using namespace std;
 
-Data::Data(int mes, int ano){
-    this->mes = mes;
-    this->ano = ano; 
+Data::Data(int mes, int ano) : 
+    mes(mes), ano(ano){
+    }
+~Data::Data(){}
 
 int get Data::getMes(){
     return mes;
@@ -13,5 +14,4 @@ int get Data::getMes(){
 
 int Data::getAno(){
     return ano;
-}
 }
