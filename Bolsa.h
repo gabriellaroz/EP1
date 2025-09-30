@@ -15,6 +15,9 @@ public:
     bool estaDentroDoPeriodo(Data* d);
 
     double getValor(Data* data);
+
+
+    double funcao();
 private:
 }
 #endif
