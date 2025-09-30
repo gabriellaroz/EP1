@@ -9,5 +9,13 @@ public:
     string getNome();
     int getNusp();
     string getUnidade();
+
+private: 
+
+ int nusp = 0;
+ string nome = "";
+ string unidade = ""; 
+
 }
+
 #endif
