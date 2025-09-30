@@ -22,5 +22,3 @@ Professor* GerenciadorDeUsuario::getProfessor(int nusp){}
 Aluno** GerenciadorDeUsuario::getAlunos(int& quantidade){} 
 
 Professor** GerenciadorDeUsuario::getProfessores(int& quantidade){}
-
-}
