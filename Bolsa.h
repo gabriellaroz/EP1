@@ -7,7 +7,7 @@
 #include "Professor.h"
 
 class Bolsa {
-private:
+public:
     Data* inicio;
     Data* fim;
     Professor* responsável;
