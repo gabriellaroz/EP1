@@ -3,7 +3,6 @@
 
 class Data {
 public:
-
     Data(int mes, int ano);
     virtual ~Data();
 

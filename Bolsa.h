@@ -3,9 +3,14 @@
 
 #define BOLSA_USP 700.0
 
+#include "Data.h"
+#include "Professor.h"
+
 class Bolsa {
-private:
-    int 
+public:
+    Data* inicio;
+    Data* fim;
+    Professor* responsável;
 public:
     Bolsa(Data* inicio, Data* fim, Professor* responsavel);
     virtual ~Professor();
@@ -17,6 +22,5 @@ public:
     bool estaDentroDoPeriodo(Data* d);
 
     double getValor(Data* data);
-    
 }
 #endif
