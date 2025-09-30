@@ -12,8 +12,8 @@ public:
 
 private: 
 
- int mes = 0;
- int ano = 0;
+ int mes;
+ int ano;
     
 }
 #endif

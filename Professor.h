@@ -12,9 +12,9 @@ public:
 
 private: 
 
- int nusp = 0;
- string nome = "";
- string unidade = ""; 
+ int nusp;
+ string nome;
+ string unidade;
 
 }
 
