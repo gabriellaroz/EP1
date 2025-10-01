@@ -57,11 +57,11 @@ bool Aluno::adicionar(Bolsa* bolsa) {
         return false;
     }
 
-   for (i = 0; i < quantidade && adicionar; i++) {
-     if (temConflitoDeBolsas(bolsa->getInicio(), bolsa->getFim(), bolsas[i]->getInicio(), bolsas[i]->getFim())){
+    for (i = 0; i < quantidade && adicionar; i++) {
+        if (temConflitoDeBolsas(bolsa->getInicio(), bolsa->getFim(), bolsas[i]->getInicio(), bolsas[i]->getFim())){
         adicionar = false;
+        }
     }
-}
 
     if (adicionar) {
         bolsas[quantidade] = bolsa;
@@ -84,9 +84,9 @@ double Aluno::getValor(Data* data) {
         Bolsa* b = bolsas[i];
 
         
-       depoisInicio = (data->getAno() > b->getInicio()->getAno()) || (data->getAno() == b->getInicio()->getAno() && data->getMes() >= b->getInicio()->getMes());
+        depoisInicio = (data->getAno() > b->getInicio()->getAno()) || (data->getAno() == b->getInicio()->getAno() && data->getMes() >= b->getInicio()->getMes());
 
-       antesFim = (data->getAno() < b->getFim()->getAno()) || (data->getAno() == b->getFim()->getAno() && data->getMes() <= b->getFim()->getMes());
+        antesFim = (data->getAno() < b->getFim()->getAno()) || (data->getAno() == b->getFim()->getAno() && data->getMes() <= b->getFim()->getMes());
 
         if (depoisInicio && antesFim) {
             return b->getValor();

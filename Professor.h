@@ -6,16 +6,13 @@ public:
     Professor(int nusp, string nome, string unidade);
     virtual ~Professor();
 
-    string getNome();
     int getNusp();
+    string getNome();
     string getUnidade();
-
 private: 
-
- int nusp;
- string nome;
- string unidade;
-
+    int nusp = 0;
+    string nome = "";
+    string unidade = "";
 }
 
 #endif
