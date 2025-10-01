@@ -2,8 +2,12 @@
 #define GERENCIADOR_H 
 
 class GerenciadorDeUsuario{ 
-
-    public: 
+private: 
+    int maximo = 0;
+    Aluno* a;
+    Professor* a;
+    
+public:
     GerenciadorDeUsuario(int maximo);
     virtual ~GerenciadorDeUsuario();
 
@@ -15,13 +19,5 @@ class GerenciadorDeUsuario{
 
     Aluno** getAlunos(int& quantidade);
     Professor** getProfessores(int& quantidade);
-
-    private: 
-
-    Aluno** alunos;
-    Professor ** professores; 
-    int quantidadeDeAlunos;
-    int quantidadeDeProfessores;
-    int maximoDeUsuarios;
 }
 

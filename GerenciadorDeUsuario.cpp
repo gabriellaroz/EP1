@@ -5,22 +5,92 @@
 
 using namespace std;
 
-GerenciadorDeUsuario::GerenciadorDeUsuario(int maximo): 
-maximoDeUsuarios(maximo){
-
-~GerenciadorDeUsuario(){}
+GerenciadorDeUsuario::GerenciadorDeUsuario(int maximo) : maximo(maximo) {
+    Aluno *vetorAlunos[maximo - 1];
+    Professor *vetorProfessores[maximo - 1];   
+    for (int i = 0, i <= (maximo - 1), i++) {
+        vetorAlunos[i] = nullptr;
+        vetorProfessores[i] = nullptr;
+    } 
 }
 
-bool GerenciadorDeUsuario::adicionarAluno(Aluno* a){}
-
-bool GerenciadorDeUsuario::adicionarProfessor(Professor* a){}
-
-Aluno* GerenciadorDeUsuario::getAluno(int nusp){}
-
-Professor* GerenciadorDeUsuario::getProfessor(int nusp){}
-
-Aluno** GerenciadorDeUsuario::getAlunos(int& quantidade){} 
-
-Professor** GerenciadorDeUsuario::getProfessores(int& quantidade){}
-
+GerenciadorDeUsuario::~GerenciadorDeUsuario() {
+    for (int i = 0, i <= (maximo - 1), i++) {
+        delete vetorAlunos[i];
+        delete vetorProfessores[i];
+    }
+    delete vetorAlunos;
+    delete vetorProfessores;
 }
+
+
+bool adicionarAluno(Aluno* a) {
+    for (int i = 0, i <= (maximo - 1), i++) {
+        if (vetorAlunos[i] != nullptr && vetorAlunos[i]->nusp == a->nusp) {
+            return false;
+        }
+    }
+    for (int j = 0, j <= (maximo - 1), j++) {
+        if (vetorAlunos[j] == nullptr) {
+            vetorAlunos[j] = a;
+            return true;
+        }
+    }
+    return false;
+}
+
+bool adicionarProfessor(Professor* a) {
+    for (int i = 0, i <= (maximo - 1), i++) {
+        if (vetorAluno[i] != nullptr && vetorProfessores[i]->nusp == a->nusp) {
+            return false;
+        }
+    }
+    for (int j = 0, j <= (maximo - 1), j++) {
+        if (vetorProfessores[j] == nullptr) {
+            vetorProfessores[j] = a;
+            return true;
+        }
+    }
+    return false;
+}
+
+Aluno* getAluno(int nusp) {
+    for (int i = 0, i <= (maximo - 1), i++) {
+        if (vetorAlunos[i] != nullptr && vetorAlunos[i]->nusp == nusp) {
+            return vetorAlunos[i];
+        }
+    }
+    return nullptr;
+}
+
+Professor* getProfessor(int nusp) {
+    for (int i = 0, i <= (maximo - 1), i++) {
+        if (vetorProfessores[i] != nullptr && vetorProfessores[i]->nusp == nusp) {
+            return vetorProfessores[i];
+        }
+    }
+    return nullptr;
+}
+
+Aluno** getAlunos(int& quantidade) {
+    int numDeAlunos = 0
+    for (int i = 0, i <= (maximo - 1), i++) {
+        if (vetorAlunos[i] != nullptr) {
+            numDeAlunos = numDeAlunos + 1;
+        }
+    }
+    quantidade = numDeAlunos;
+    return *vetorAlunos;
+} 
+
+Professor** getProfessores(int& quantidade){
+    int numDeProfessores = 0
+    for (int i = 0, i <= (maximo - 1), i++) {
+        if (vetorProfessores[i] != nullptr) {
+            numDeProfessores = numDeProfessores + 1;
+        }
+    }
+    quantidade = numDeProfessores;
+    return *vetorProfessores;
+}
+
