@@ -11,36 +11,41 @@ Bolsa::~Bolsa() {
     delete fim;
 }
 
-Data* getInicio() {
+Data* Bolsa:: getInicio() {
     return inicio;
 }
 
-Data* getFim() {
+Data* Bolsa: getFim() {
     return fim;
 }
 
-Professor* getResponsavel() {
+Professor* Bolsa:: getResponsavel() {
     return responsavel;
 }
 
-bool estaDentroDoPeriodo(Data* d) {
+bool Bolsa:: estaDentroDoPeriodo(Data* d) {
+
     if (inicio->ano == fim->ano) {
-        if (d->mes >= inicio->mes && d->mes <= fim->mes) {
+        if (d->mes >= inicio->mes && d->mes <= fim->mes){
             return true;
         }
-    } else if (d->mes >= fim->mes && d->ano == fim->ano) {
+
+    } else if (d->mes >= fim->mes && d->ano == fim->ano){
         return true;
-    } else if (d->mes >= inicio->mes && d->ano == inicio->ano) {
+
+    } else if (d->mes >= inicio->mes && d->ano == inicio->ano){
         return true;
-    } else {
+        
+    } else{
         return false;
     }
 } 
 
-double getValor(Data* data) {
-    if (estaDentroDoPeriodo) {
+double getValor(Data* data){
+    if (estaDentroDoPeriodo){
         return BOLSA_USP;
-    } else {
+
+    } else{
         return 0;
     }
 }

@@ -5,8 +5,7 @@
 using namespace std;
 
 Aluno::Aluno(int nusp, string nome, int maximo): 
-
-{}
+nusp(nusp), nome(nome), maximo(maximo), quantidade(0){}
 
 Aluno::~Aluno(){}
 
@@ -41,6 +40,21 @@ bool Aluno::temConflitoDeBolsas(Data* inicio1, Data* fim1, Data* inicio2, Data* 
     }
     return true;
 }
+
+bool Aluno::adicionar(Bolsa* bolsa) {
+  
+}
+
+
+Bolsa** Aluno::getBolsas(){
+    return bolsas;
+}
+
+double Aluno::getValor(Data* data) {
+}
+
+
+
 
 
 

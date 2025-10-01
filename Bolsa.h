@@ -13,7 +13,7 @@ public:
     Professor* responsável;
 public:
     Bolsa(Data* inicio, Data* fim, Professor* responsavel);
-    virtual ~Professor();
+    virtual ~Bolsa();
 
     Data* getInicio();
     Data* getFim();
@@ -23,4 +23,4 @@ public:
 
     double getValor(Data* data);
 }
-#endif
+#endif 
