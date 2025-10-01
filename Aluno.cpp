@@ -5,10 +5,18 @@
 using namespace std;
 
 Aluno::Aluno(int nusp, string nome, int maximo): 
-nusp(nusp), nome(nome), maximo(maximo), quantidade(0){}
+nusp(nusp), nome(nome), maximo(maximo), quantidade(0){
+bolsas = new Bolsa*[maximo];
+}
 
-Aluno::~Aluno(){}
-
+Aluno::~Aluno(){
+    int i = 0;
+    while (i < quantidade) {
+        delete bolsas[i];
+        i++;
+    }
+    delete[] bolsas;
+}
 int Aluno::getNusp(){
     return nusp;
 }
@@ -42,18 +50,52 @@ bool Aluno::temConflitoDeBolsas(Data* inicio1, Data* fim1, Data* inicio2, Data* 
 }
 
 bool Aluno::adicionar(Bolsa* bolsa) {
-  
+    bool adicionar = true;
+    int i;
+
+    if (quantidade >= maximo){
+        return false;
+    }
+
+   for (i = 0; i < quantidade && adicionar; i++) {
+     if (temConflitoDeBolsas(bolsa->getInicio(), bolsa->getFim(), bolsas[i]->getInicio(), bolsas[i]->getFim())){
+        adicionar = false;
+    }
 }
 
+    if (adicionar) {
+        bolsas[quantidade] = bolsa;
+        quantidade++;
+        return true;
+    }
+
+    return false;
+}
 
 Bolsa** Aluno::getBolsas(){
     return bolsas;
 }
 
 double Aluno::getValor(Data* data) {
+    bool depoisInicio;
+    bool antesFim;
+
+    for (int i = 0; i < quantidade; i++) {
+        Bolsa* b = bolsas[i];
+
+        
+       depoisInicio = (data->getAno() > b->getInicio()->getAno()) || (data->getAno() == b->getInicio()->getAno() && data->getMes() >= b->getInicio()->getMes());
+
+       antesFim = (data->getAno() < b->getFim()->getAno()) || (data->getAno() == b->getFim()->getAno() && data->getMes() <= b->getFim()->getMes());
+
+        if (depoisInicio && antesFim) {
+            return b->getValor();
+        }
+    }
+    return 0;
 }
 
-
+//preciso verificar pra ver se roda tudo certo e ver oq mais falta fazer, comentar o codigo pra n esquecer oq fiz 
 
 
 

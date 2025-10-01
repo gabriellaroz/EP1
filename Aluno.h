@@ -26,5 +26,5 @@ public:
     string nome; 
     Bolsa** bolsas; 
 
-}
+};
 #endif
