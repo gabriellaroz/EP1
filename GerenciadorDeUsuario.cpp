@@ -24,7 +24,7 @@ GerenciadorDeUsuario::~GerenciadorDeUsuario() {
 }
 
 
-bool adicionarAluno(Aluno* a) {
+bool GerenciadorDeUsuario::adicionarAluno(Aluno* a) {
     for (int i = 0, i <= (maximo - 1), i++) {
         if (vetorAlunos[i] != nullptr && vetorAlunos[i]->nusp == a->nusp) {
             return false;
@@ -39,7 +39,7 @@ bool adicionarAluno(Aluno* a) {
     return false;
 }
 
-bool adicionarProfessor(Professor* a) {
+bool GerenciadorDeUsuario::adicionarProfessor(Professor* a) {
     for (int i = 0, i <= (maximo - 1), i++) {
         if (vetorAluno[i] != nullptr && vetorProfessores[i]->nusp == a->nusp) {
             return false;
@@ -54,7 +54,7 @@ bool adicionarProfessor(Professor* a) {
     return false;
 }
 
-Aluno* getAluno(int nusp) {
+Aluno* GerenciadorDeUsuario::getAluno(int nusp) {
     for (int i = 0, i <= (maximo - 1), i++) {
         if (vetorAlunos[i] != nullptr && vetorAlunos[i]->nusp == nusp) {
             return vetorAlunos[i];
@@ -63,7 +63,7 @@ Aluno* getAluno(int nusp) {
     return nullptr;
 }
 
-Professor* getProfessor(int nusp) {
+Professor* GerenciadorDeUsuario::getProfessor(int nusp) {
     for (int i = 0, i <= (maximo - 1), i++) {
         if (vetorProfessores[i] != nullptr && vetorProfessores[i]->nusp == nusp) {
             return vetorProfessores[i];
@@ -72,7 +72,7 @@ Professor* getProfessor(int nusp) {
     return nullptr;
 }
 
-Aluno** getAlunos(int& quantidade) {
+Aluno** GerenciadorDeUsuario::getAlunos(int& quantidade) {
     int numDeAlunos = 0
     for (int i = 0, i <= (maximo - 1), i++) {
         if (vetorAlunos[i] != nullptr) {
@@ -83,7 +83,7 @@ Aluno** getAlunos(int& quantidade) {
     return *vetorAlunos;
 } 
 
-Professor** getProfessores(int& quantidade){
+Professor** GerenciadorDeUsuario::getProfessores(int& quantidade){
     int numDeProfessores = 0
     for (int i = 0, i <= (maximo - 1), i++) {
         if (vetorProfessores[i] != nullptr) {

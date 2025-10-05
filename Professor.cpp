@@ -9,15 +9,15 @@ Professor::Professor(int nusp, string nome, string unidade):
 
 ~Professor::Professor(){}
 
-string getNome(){
+string Professor::getNome(){
    return nome; 
 }
 
-int getNusp(){
+int Professor::getNusp(){
    return nusp;
 }
 
-string getUnidade(){
+string Professor::getUnidade(){
    return unidade;
 }
  

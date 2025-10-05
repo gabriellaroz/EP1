@@ -37,7 +37,7 @@ bool Bolsa:: estaDentroDoPeriodo(Data* d) {
     }
 } 
 
-double getValor(Data* data) {
+double Bolsa::getValor(Data* data) {
     if (estaDentroDoPeriodo) {
         return BOLSA_USP;
     } else {
