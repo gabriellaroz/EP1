@@ -51,13 +51,12 @@ bool Aluno::temConflitoDeBolsas(Data* inicio1, Data* fim1, Data* inicio2, Data* 
 
 bool Aluno::adicionar(Bolsa* bolsa) {
     bool adicionar = true;
-    int i;
-
+    
     if (quantidade >= maximo){
         return false;
     }
 
-    for (i = 0; i < quantidade && adicionar; i++) {
+    for (int i = 0; i < quantidade && adicionar; i++) {
         if (temConflitoDeBolsas(bolsa->getInicio(), bolsa->getFim(), bolsas[i]->getInicio(), bolsas[i]->getFim())){
         adicionar = false;
         }
