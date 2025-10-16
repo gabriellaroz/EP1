@@ -39,7 +39,7 @@ void menu() {
             cin >> unidade >> endl;
             Professor* professor = new Professor(nusp, nome, unidade);
             gerenciador->adicionarProfessor(professor);
-            if(gerenciador->adicionarProfessor(professor)) {
+            if(gerenciador->adiciogitnarProfessor(professor)) {
                 cout << "Professor adicionado com sucesso" << endl;
             } else {
                 cout << "Erro ao adicionar professor" << endl;

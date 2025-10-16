@@ -6,6 +6,9 @@
 #include "Data.h"
 #include "Professor.h"
 
+Class Data; 
+Class Professor; 
+
 class Bolsa {
 public:
     Data* inicio;

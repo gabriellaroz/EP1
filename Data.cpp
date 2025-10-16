@@ -1,7 +1,4 @@
 #include "Data.h"
-#include <iostream>
-
-using namespace std;
 
 Data::Data(int mes, int ano) : 
     mes(mes), ano(ano){
