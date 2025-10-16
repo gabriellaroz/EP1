@@ -1,6 +1,8 @@
 #ifndef PROFESSOR_H
 #define PROFESSOR_H
 
+#include <string>
+
 class Professor {
 public: 
     Professor(int nusp, string nome, string unidade);

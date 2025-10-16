@@ -8,7 +8,7 @@ Professor::Professor(int nusp, string nome, string unidade):
  nusp(nusp), nome(nome), unidade(unidade){
 }
 
-~Professor::Professor(){}
+Professor::~Professor(){}
 
 string Professor::getNome(){
    return nome; 

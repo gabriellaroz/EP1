@@ -1,6 +1,10 @@
 #ifndef ALUNO_H
 #define ALUNO_H
 
+#include "Data.h"
+#include "Bolsa.h"
+#include <string>
+
 class Aluno{
 public:
 

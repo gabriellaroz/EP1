@@ -12,28 +12,28 @@ Bolsa::~Bolsa() {
     delete fim;
 }
 
-Data* Bolsa:: getInicio() {
+Data* Bolsa::getInicio() {
     return inicio;
 }
 
-Data* Bolsa: getFim() {
+Data* Bolsa::getFim() {
     return fim;
 }
 
-Professor* Bolsa:: getResponsavel() {
+Professor* Bolsa::getResponsavel() {
     return responsavel;
 }
 
 bool Bolsa:: estaDentroDoPeriodo(Data* d) {
-    if (inicio->ano == fim->ano) {
-        if (d->mes >= inicio->mes && d->mes <= fim->mes) {
+    if (inicio->getAno() == fim->getAno()) {
+        if (d->getMes() >= inicio->getMes() && d->getMes() <= fim->getMes()) {
             return true;
         } else {
             return false;
         }
-    } else if (d->mes >= fim->mes && d->ano == fim->ano) {
+    } else if (d->getMes() >= fim->getMes() && d->getAno() == fim->getAno()) {
         return true;
-    } else if (d->mes >= inicio->mes && d->ano == inicio->ano) {
+    } else if (d->getMes() >= inicio->getMes() && d->getAno() == inicio->getAno()) {
         return true;
     } else {
         return false;
@@ -41,7 +41,7 @@ bool Bolsa:: estaDentroDoPeriodo(Data* d) {
 } 
 
 double Bolsa::getValor(Data* data) {
-    if (estaDentroDoPeriodo) {
+    if (estaDentroDoPeriodo(data)) {
         return BOLSA_USP;
     } else {
         return 0;

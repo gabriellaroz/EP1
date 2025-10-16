@@ -7,10 +7,10 @@
 #include "Professor.h"
 
 class Bolsa {
-public:
+private:
     Data* inicio;
     Data* fim;
-    Professor* responsável;
+    Professor* responsavel;
 public:
     Bolsa(Data* inicio, Data* fim, Professor* responsavel);
     virtual ~Bolsa();

@@ -15,7 +15,7 @@ void menu() {
     string unidade = "";
     bool terminarPrograma = false;
     GerenciadorDeUsuario* gerenciador = new GerenciadorDeUsuario(10);
-    for(terminarPrograma == false) {
+    for(;terminarPrograma == false;"") {
         cout << "Gestao de bolsas USP" << endl << "1) Adicionar Aluno" << endl << "2) Adicionar professor" << endl << "3) Cadastrar bolsa" << endl << "4) Consultar usuario" << endl << "0) Sair" << endl << "Escolha uma opcao: ";
         cin >> opcao;
         if(opcao == 1) {

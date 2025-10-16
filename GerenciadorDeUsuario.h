@@ -1,5 +1,9 @@
-#ifndef GERENCIADOR_H
-#define GERENCIADOR_H 
+#ifndef GERENCIADORDEUSUARIO_H
+#define GERENCIADORDEUSUARIO_H 
+
+#include "Aluno.h"
+#include "Professor.h"
+#include <string>
 
 class GerenciadorDeUsuario{ 
 private: 
@@ -21,3 +25,4 @@ public:
     Professor** getProfessores(int& quantidade);
 };
 
+#endif
