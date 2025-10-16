@@ -6,6 +6,10 @@
 #include <string>
 usign namespace std;
 
+#include "Data.h"
+#include "Bolsa.h"
+#include <string>
+
 class Aluno{
 public:
 

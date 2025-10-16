@@ -7,31 +7,31 @@
 using namespace std;
 
 GerenciadorDeUsuario::GerenciadorDeUsuario(int maximo) : maximo(maximo) {
-    Aluno *vetorAlunos[this->maximo - 1];
-    Professor *vetorProfessores[this->maximo - 1];   
-    for (int i = 0, i < (this->maximo ), i++) {
+    Aluno** vetorAlunos[this->maximo - 1];
+    Professor** vetorProfessores[this->maximo - 1];   
+    for (int i = 0; i < (this->maximo ); i++) {
         vetorAlunos[i] = nullptr;
         vetorProfessores[i] = nullptr;
     } 
 }
 
 GerenciadorDeUsuario::~GerenciadorDeUsuario() {
-    for (int i = 0, i < (this->maximo), i++) {
+    for (int i = 0; i < (this->maximo); i++) {
         delete vetorAlunos[i];
         delete vetorProfessores[i];
     }
-    delete vetorAlunos;
-    delete vetorProfessores;
+    delete[] vetorAlunos;
+    delete[] vetorProfessores;
 }
 
 
 bool GerenciadorDeUsuario::adicionarAluno(Aluno* a) {
-    for (int i = 0, i < (this->maximo), i++) {
-        if (vetorAlunos[i] != nullptr && vetorAlunos[i]->nusp == a->nusp) {
+    for (int i = 0; i < (this->maximo); i++) {
+        if (vetorAlunos[i] != nullptr && vetorAlunos[i]->getNusp() == a->getNusp()) {
             return false;
         }
     }
-    for (int j = 0, j < (this->maximo), j++) {
+    for (int j = 0; j < (this->maximo); j++) {
         if (vetorAlunos[j] == nullptr) {
             vetorAlunos[j] = a;
             return true;
@@ -41,12 +41,12 @@ bool GerenciadorDeUsuario::adicionarAluno(Aluno* a) {
 }
 
 bool GerenciadorDeUsuario::adicionarProfessor(Professor* a) {
-    for (int i = 0, i < (this->maximo), i++) {
-        if (vetorAluno[i] != nullptr && vetorProfessores[i]->nusp == a->nusp) {
+    for (int i = 0; i < (this->maximo); i++) {
+        if (vetorAluno[i] != nullptr && vetorProfessores[i]->getNusp() == a->getNusp()) {
             return false;
         }
     }
-    for (int j = 0, j < (this->maximo), j++) {
+    for (int j = 0; j < (this->maximo); j++) {
         if (vetorProfessores[j] == nullptr) {
             vetorProfessores[j] = a;
             return true;
@@ -56,8 +56,8 @@ bool GerenciadorDeUsuario::adicionarProfessor(Professor* a) {
 }
 
 Aluno* GerenciadorDeUsuario::getAluno(int nusp) {
-    for (int i = 0, i < (this->maximo), i++) {
-        if (vetorAlunos[i] != nullptr && vetorAlunos[i]->nusp == this->nusp) {
+    for (int i = 0; i < (this->maximo); i++) {
+        if (vetorAlunos[i] != nullptr && vetorAlunos[i]->getNusp() == getNusp()) {
             return vetorAlunos[i];
         }
     }
@@ -65,8 +65,8 @@ Aluno* GerenciadorDeUsuario::getAluno(int nusp) {
 }
 
 Professor* GerenciadorDeUsuario::getProfessor(int nusp) {
-    for (int i = 0, i < (this->maximo), i++) {
-        if (vetorProfessores[i] != nullptr && vetorProfessores[i]->nusp == this->nusp) {
+    for (int i = 0; i < (this->maximo); i++) {
+        if (vetorProfessores[i] != nullptr && vetorProfessores[i]->getNusp() == nusp) {
             return vetorProfessores[i];
         }
     }
@@ -74,24 +74,28 @@ Professor* GerenciadorDeUsuario::getProfessor(int nusp) {
 }
 
 Aluno** GerenciadorDeUsuario::getAlunos(int& quantidade) {
-    int numDeAlunos = 0
-    for (int i = 0, i < (this->maximo), i++) {
+    int numDeAlunos = 0;
+    Aluno** alunosRegistrados = new Aluno*[quantidade];
+    for (int i = 0; i < (this->maximo); i++) {
         if (vetorAlunos[i] != nullptr) {
-            numDeAlunos = numDeAlunos + 1;
+            alunosRegistrados[numDeAlunos] = vetorAlunos[i];
+            numDeAlunos++;
         }
     }
     this->quantidade = numDeAlunos;
-    return *vetorAlunos;
+    return alunosRegistrados;
 } 
 
 Professor** GerenciadorDeUsuario::getProfessores(int& quantidade){
-    int numDeProfessores = 0
-    for (int i = 0, i <= (this->maximo - 1), i++) {
+    int numDeProfessores = 0;
+    Professor** professoresRegistrados = new Professor*[quantidade];
+    for (int i = 0; i <= (this->maximo - 1); i++) {
         if (vetorProfessores[i] != nullptr) {
-            numDeProfessores = numDeProfessores + 1;
+            professoresRegistrados[numDeProfessores] = vetorProfessores[i];
+            numDeProfessores++;
         }
     }
     this->quantidade = numDeProfessores;
-    return *vetorProfessores;
+    return professoresRegistrados;
 }
 

@@ -6,7 +6,7 @@ Data::Data(int mes, int ano) :
 
 Data::~Data(){}
 
-int get Data::getMes(){
+int Data::getMes(){
     return mes;
 }
 
