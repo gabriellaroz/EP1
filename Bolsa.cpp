@@ -1,4 +1,6 @@
 #include "Bolsa.h"
+#include "Data.h"
+#include "Professor.h"
 #include <iostream>
 #include <string>
 

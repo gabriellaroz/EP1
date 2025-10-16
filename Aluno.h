@@ -1,14 +1,9 @@
 #ifndef ALUNO_H
 #define ALUNO_H
 #include "Bolsa.h"
-#include "Data.h"
-
 #include <string>
-usign namespace std;
 
-#include "Data.h"
-#include "Bolsa.h"
-#include <string>
+using namespace std; 
 
 class Aluno{
 public:

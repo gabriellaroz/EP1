@@ -3,11 +3,8 @@
 
 #define BOLSA_USP 700.0
 
-#include "Data.h"
-#include "Professor.h"
-
-Class Data; 
-Class Professor; 
+class Data; 
+class Professor; 
 
 class Bolsa {
 private:

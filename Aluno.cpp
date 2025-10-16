@@ -90,7 +90,7 @@ double Aluno::getValor(Data* data) {
     }
     return 0;
 }
-//preciso verificar pra ver se roda tudo certo e ver oq mais falta fazer, comentar o codigo pra n esquecer oq fiz 
+ 
 
 
 
