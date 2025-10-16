@@ -3,13 +3,13 @@
 
 #include "Aluno.h"
 #include "Professor.h"
-#include <string>
+
 
 class GerenciadorDeUsuario{ 
 private: 
-    int maximo = 0;
-    Aluno* a;
-    Professor* a;
+    int maximo;
+    Aluno** vetorAlunos;
+    Professor** vetorProfessores;
     
 public:
     GerenciadorDeUsuario(int maximo);
