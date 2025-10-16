@@ -1,6 +1,7 @@
 #include "Aluno.h"
 #include "Data.h"
 #include <iostream>
+#include <string>
 
 using namespace std;
 
