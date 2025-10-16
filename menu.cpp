@@ -29,7 +29,7 @@ void menu(){
         if (opcao == 1){
             cout << "Cadastro de aluno" << endl << "Digite o NUSP: ";
             cin >> nusp;
-            cout << "Digite o nome (sem espacos): ";
+            cout << "Digite o nome: ";
             cin >> nome;
 
             Aluno* aluno = new Aluno(nusp, nome, 3); 
@@ -45,9 +45,9 @@ void menu(){
         else if (opcao == 2){
             cout << "Cadastro de professor" << endl << "Digite o NUSP: ";
             cin >> nusp;
-            cout << "Digite o nome (sem espacos): ";
+            cout << "Digite o nome: ";
             cin >> nome;
-            cout << "Digite a unidade (sem espacos): ";
+            cout << "Digite a unidade: ";
             cin >> unidade;
 
             Professor* professor = new Professor(nusp, nome, unidade);
@@ -62,11 +62,13 @@ void menu(){
         } 
         else if (opcao == 3){
             int nuspAluno, nuspProfessor;
-            cout << "Cadastro de bolsa" << endl << "Alunos cadastrados:" << endl;
-            for (int i = 0; i < 10; i++){
-                Aluno* a = gerenciador->getAluno(i);
-                if (a != nullptr){
-                    cout << a->getNusp() << " - " << a->getNome() << endl;
+            int quantidadeAlunos = 10;
+            cout << "Cadastro de bolsa" << endl << "Alunos" << endl;
+            Aluno** a = gerenciador->getAlunos(quantidadeAlunos);
+            for (int i = 0; i < quantidadeAlunos; i++){
+                
+                if (a[i] != nullptr){
+                    cout << a[i]->getNusp() << " - " << a[i]->getNome() << endl;
                 }
             }
 
@@ -78,11 +80,12 @@ void menu(){
                 continue;
             }
 
-            cout << "Professores cadastrados:" << endl;
-            for (int i = 0; i < 10; i++){
-                Professor* p = gerenciador->getProfessor(i);
-                if (p != nullptr){
-                    cout << p->getNusp() << " - " << p->getNome() << " - " << p->getUnidade() << endl;
+            int quantidadeProfessores = 10;
+            cout << "Professores" << endl;
+            Professor** p = gerenciador->getProfessores(quantidadeProfessores);
+            for (int i = 0; i < quantidadeProfessores; i++){
+                if (p[i] != nullptr){
+                    cout << p[i]->getNusp() << " - " << p[i]->getNome() << " - " << p[i]->getUnidade() << endl;
                 }
             }
 
@@ -120,13 +123,18 @@ void menu(){
             Aluno* aluno = gerenciador->getAluno(nuspConsulta);
             if (aluno){
                 Bolsa** bolsas = aluno->getBolsas();
-                cout << "Aluno: " << aluno->getNome() << endl << "Bolsas: " << endl;
+                bool temBolsa = false;
+                cout << "Aluno: " << aluno->getNome() << endl;
                 for (int i = 0; i < 3; i++){ 
                     if (bolsas[i] != nullptr){
-                        cout << bolsas[i]->getInicio()->getMes() << "/" << bolsas[i]->getInicio()->getAno()
+                        temBolsa  = true;
+                        cout << "Bolsas: " << endl << bolsas[i]->getInicio()->getMes() << "/" << bolsas[i]->getInicio()->getAno()
                              << " a " << bolsas[i]->getFim()->getMes() << "/" << bolsas[i]->getFim()->getAno()
                              << " - Orientador NUSP: " << bolsas[i]->getResponsavel()->getNusp() << endl;
-                    }
+                    } 
+                }
+                if(temBolsa == false) {
+                    cout << "Sem bolsas" << endl;
                 }
             } 
             else{
