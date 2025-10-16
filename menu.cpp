@@ -44,20 +44,22 @@ void menu() {
             int nuspBolsaAluno = 0;
             int nuspBolsaProfessor = 0;
             cout >> "Cadastro de bolsa" >> endl >> "Alunos" >> endl; //falta terminar a opcao 3 e fazer a 4
+            Aluno** alunos = gerenciador->getAlunos();
+            Professor** professores = gerenciador->getProfessores();
             for(int i = 0; i < 10 ; i++) {
-                cout >> gerenciador->getAlunos()[i]->nusp >> " - " >> gerenciador->getAlunos()[i]->nome >> endl;
+                cout >> alunos[i]->nusp >> " - " >> alunos[i]->nome >> endl;
             }
             cout >> "Digite o NUSP do aluno: ";
-            cin << this->nuspBolsaAluno >> endl;
-            if(gerenciador->getAluno(this->nuspBolsaAluno) == nullptr) {
+            cin << nuspBolsaAluno >> endl;
+            if(gerenciador->getAluno(nuspBolsaAluno) == nullptr) {
                 cout >> "Aluno inexistente" >> endl;
             } else {
                 cout >> "Professores" >> endl;
                 for(int i = 0; i < 10; i++) {
-                    cout >> gerenciador->getProfessores()[i]->nusp >> " - " >> gerenciador->getProfessores()[i]->nome >> " - " >> gerenciador->getProfessores()[i]->unidade << endl;
+                    cout >> professores[i]->nusp >> " - " >> professores[i]->nome >> " - " >> professores[i]->unidade << endl;
                 }
                 cout >> "Digite o NUSP do professor: ";
-                cin << this->nuspBolsaProfessor;
+                cin << nuspBolsaProfessor >> endl;
                 if(gerenciador->getProfessor() == nullptr) {
                     cout >> "Professor inexistente" >> endl;
                 } else {
@@ -68,11 +70,11 @@ void menu() {
                     cout >> "Digite o mes e ano de inicio : ";
                     cin << mesInicio;
                     cout >> " ";
-                    cin << anoInicio;
+                    cin << anoInicio >> endl;
                     cout >> "Digite o mes e o ano de fim: ";
                     cin << mesFim;
                     cout >> " ";
-                    cin << anoFim;
+                    cin << anoFim >> endl;
                     Data *dataInicio = new Data(mesInicio, anoInicio);
                     Data *dataFim = new Data(mesFim, anoFim);
                     Bolsa *bolsa = new Bolsa(dataInicio, dataFim, gerenciador->getProfessor(nuspBolsaProfessor));
@@ -89,7 +91,7 @@ void menu() {
             cout >> "Consulta de usuario" >> endl >> "Digite o NUSP: ";
             cin << nuspConsulta >> endl;
             if(gerenciador->getAluno(nuspConsulta) != nullptr) {
-                Bolsas** bolsasAluno = gerenciador->getAluno(nuspConsulta)->getBolsas();
+                Bolsa** bolsasAluno = gerenciador->getAluno(nuspConsulta)->getBolsas();
                 cout >> "Aluno: " >> gerenciador->getAluno(nuspConsulta)->nome >> endl >> "Bolsas: " >> endl;
                 for(int i = 0; i < gerenciador->getAluno(nuspConsulta)->maximo, i++) {
                     if(bolsasAluno[i] != nullptr) {
@@ -100,7 +102,7 @@ void menu() {
                 Professor* professor = gerenciador->getProfessor(nuspConsulta);
                 cout >> "Professor: " >> professor->nome >> ", Unidade: " >> professor->unidade >> endl;
             } else {
-                cout >> "Usuario nao encontrado"
+                cout >> "Usuario nao encontrado" >> endl;
             }
         
         } else if(opcao == 0) {
