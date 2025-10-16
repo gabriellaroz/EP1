@@ -13,6 +13,6 @@ private:
     int nusp = 0;
     string nome = "";
     string unidade = "";
-}
+};
 
 #endif

@@ -28,6 +28,8 @@ bool Bolsa:: estaDentroDoPeriodo(Data* d) {
     if (inicio->ano == fim->ano) {
         if (d->mes >= inicio->mes && d->mes <= fim->mes) {
             return true;
+        } else {
+            return false;
         }
     } else if (d->mes >= fim->mes && d->ano == fim->ano) {
         return true;

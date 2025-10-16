@@ -22,5 +22,5 @@ public:
     bool estaDentroDoPeriodo(Data* d);
 
     double getValor(Data* data);
-}
+};
 #endif 

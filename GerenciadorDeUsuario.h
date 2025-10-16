@@ -19,5 +19,5 @@ public:
 
     Aluno** getAlunos(int& quantidade);
     Professor** getProfessores(int& quantidade);
-}
+};
 
