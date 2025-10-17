@@ -6,21 +6,21 @@
 
 using namespace std;
 
-GerenciadorDeUsuario::GerenciadorDeUsuario(int maximo) : maximo(maximo) {
+GerenciadorDeUsuario::GerenciadorDeUsuario(int maximo) : maximo(maximo){
     this->maximo = maximo;
 
     vetorAlunos = new Aluno*[maximo];
     vetorProfessores = new Professor*[maximo];
 
-    for (int i = 0; i < maximo; i++) {
+    for (int i = 0; i < maximo; i++){
         vetorAlunos[i] = nullptr;
         vetorProfessores[i] = nullptr;
     }
 }
 
-GerenciadorDeUsuario::~GerenciadorDeUsuario() {
+GerenciadorDeUsuario::~GerenciadorDeUsuario(){
     int i;
-    for (i = 0; i < (this->maximo); i++) {
+    for (i = 0; i < (this->maximo); i++){
         delete vetorAlunos[i];
         delete vetorProfessores[i];
     }
@@ -29,16 +29,15 @@ GerenciadorDeUsuario::~GerenciadorDeUsuario() {
 }
 
 
-bool GerenciadorDeUsuario::adicionarAluno(Aluno* a) {
+bool GerenciadorDeUsuario::adicionarAluno(Aluno* a){
   int i, j;
     for (i = 0; i < maximo; i++) {
-        if ((vetorAlunos[i] != nullptr && vetorAlunos[i]->getNusp() == a->getNusp()) ||
-            (vetorProfessores[i] != nullptr && vetorProfessores[i]->getNusp() == a->getNusp())) {
+        if ((vetorAlunos[i] != nullptr && vetorAlunos[i]->getNusp() == a->getNusp()) || (vetorProfessores[i] != nullptr && vetorProfessores[i]->getNusp() == a->getNusp())){
             return false;
         }
     }
-    for (j = 0; j < maximo; j++) {
-        if (vetorAlunos[j] == nullptr) {
+    for (j = 0; j < maximo; j++){
+        if (vetorAlunos[j] == nullptr){
             vetorAlunos[j] = a;
             return true;
         }
@@ -46,28 +45,25 @@ bool GerenciadorDeUsuario::adicionarAluno(Aluno* a) {
     return false; 
 }
 
-bool GerenciadorDeUsuario::adicionarProfessor(Professor* a) {
-    // Verifica se já existe aluno ou professor com o mesmo NUSP
-    for (int i = 0; i < maximo; i++) {
-        if ((vetorProfessores[i] != nullptr && vetorProfessores[i]->getNusp() == a->getNusp()) ||
-            (vetorAlunos[i] != nullptr && vetorAlunos[i]->getNusp() == a->getNusp())) {
+bool GerenciadorDeUsuario::adicionarProfessor(Professor* a){
+    int i, j;
+    for (i = 0; i < maximo; i++){
+        if ((vetorProfessores[i] != nullptr && vetorProfessores[i]->getNusp() == a->getNusp()) || (vetorAlunos[i] != nullptr && vetorAlunos[i]->getNusp() == a->getNusp())){
             return false;
         }
     }
-
-    // Adiciona o professor na primeira posição livre
-    for (int j = 0; j < maximo; j++) {
-        if (vetorProfessores[j] == nullptr) {
+    for (j = 0; j < maximo; j++){
+        if (vetorProfessores[j] == nullptr){
             vetorProfessores[j] = a;
             return true;
         }
     }
-
-    return false; // sem espaço
+    return false; 
 }
 
-Aluno* GerenciadorDeUsuario::getAluno(int nusp) {
-    for (int i = 0; i < maximo; i++) {
+Aluno* GerenciadorDeUsuario::getAluno(int nusp){
+    int i;
+    for (i = 0; i < maximo; i++) {
         if (vetorAlunos[i] != nullptr && vetorAlunos[i]->getNusp() == nusp) {
             return vetorAlunos[i];
         }
@@ -75,29 +71,32 @@ Aluno* GerenciadorDeUsuario::getAluno(int nusp) {
     return nullptr;
 }
 
-Professor* GerenciadorDeUsuario::getProfessor(int nusp) {
-    for (int i = 0; i < maximo; i++) {
-        if (vetorProfessores[i] != nullptr && vetorProfessores[i]->getNusp() == nusp) {
+Professor* GerenciadorDeUsuario::getProfessor(int nusp){
+    int i;
+    for (i = 0; i < maximo; i++) {
+        if (vetorProfessores[i] != nullptr && vetorProfessores[i]->getNusp() == nusp){
             return vetorProfessores[i];
         }
     }
     return nullptr;
 }
 
-Aluno** GerenciadorDeUsuario::getAlunos(int& quantidade) {
+Aluno** GerenciadorDeUsuario::getAlunos(int& quantidade){
     quantidade = 0;
-    for (int i = 0; i < maximo; i++) {
-        if (vetorAlunos[i] != nullptr) {
+    int i;
+    for (i = 0; i < maximo; i++){
+        if (vetorAlunos[i] != nullptr){
             quantidade++;
         }
     }
     return vetorAlunos;
 }
 
-Professor** GerenciadorDeUsuario::getProfessores(int& quantidade) {
+Professor** GerenciadorDeUsuario::getProfessores(int& quantidade){
     quantidade = 0;
-    for (int i = 0; i < maximo; i++) {
-        if (vetorProfessores[i] != nullptr) {
+    int i;
+    for (i = 0; i < maximo; i++){
+        if (vetorProfessores[i] != nullptr){
             quantidade++;
         }
     }

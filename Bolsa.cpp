@@ -7,50 +7,50 @@
 using namespace std;
 
 Bolsa::Bolsa(Data* inicio, Data* fim, Professor* responsavel)
-: inicio(inicio), fim(fim), responsavel(responsavel) {
+: inicio(inicio), fim(fim), responsavel(responsavel){
 }
 
-Bolsa::~Bolsa() {
+Bolsa::~Bolsa(){
     delete inicio;
     delete fim;
 }
 
-Data* Bolsa::getInicio() {
+Data* Bolsa::getInicio(){
     return inicio;
 }
 
-Data* Bolsa::getFim() {
+Data* Bolsa::getFim(){
     return fim;
 }
 
-Professor* Bolsa::getResponsavel() {
+Professor* Bolsa::getResponsavel(){
     return responsavel;
 }
 
-bool Bolsa::estaDentroDoPeriodo(Data* d) {
-    if (inicio->getAno() == fim->getAno()) {
-        if (d->getAno() == inicio->getAno() &&
-            d->getMes() >= inicio->getMes() && d->getMes() <= fim->getMes()) {
+bool Bolsa::estaDentroDoPeriodo(Data* d){
+    if (inicio->getAno() == fim->getAno()){
+        if (d->getAno() == inicio->getAno() && d->getMes() >= inicio->getMes() && d->getMes() <= fim->getMes()){
+            return true;
+        } 
+        else{
+            return false;
+        }
+    } 
+    else if (d->getAno() == inicio->getAno()){
+        if (d->getMes() >= inicio->getMes()){
             return true;
         } else {
             return false;
         }
     } 
-    else if (d->getAno() == inicio->getAno()) {
-        if (d->getMes() >= inicio->getMes()) {
+    else if (d->getAno() == fim->getAno()){
+        if (d->getMes() <= fim->getMes()){
             return true;
         } else {
             return false;
         }
     } 
-    else if (d->getAno() == fim->getAno()) {
-        if (d->getMes() <= fim->getMes()) {
-            return true;
-        } else {
-            return false;
-        }
-    } 
-    else if (d->getAno() > inicio->getAno() && d->getAno() < fim->getAno()) {
+    else if (d->getAno() > inicio->getAno() && d->getAno() < fim->getAno()){
         return true;
     } 
     else {
@@ -58,8 +58,8 @@ bool Bolsa::estaDentroDoPeriodo(Data* d) {
     }
 }
 
-double Bolsa::getValor(Data* data) {
-    if (estaDentroDoPeriodo(data)) {
+double Bolsa::getValor(Data* data){
+    if (estaDentroDoPeriodo(data)){
         return BOLSA_USP;
     } else {
         return 0;

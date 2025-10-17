@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void menu() {
+void menu(){
     int opcao = 0;
     int nusp = 0;
     string nome = "";
@@ -16,7 +16,7 @@ void menu() {
     bool terminarPrograma = false;
     GerenciadorDeUsuario* gerenciador = new GerenciadorDeUsuario(10);
 
-    while (!terminarPrograma) {
+    while (!terminarPrograma){
         cout << "Gestao de bolsas USP" << endl
              << "1) Adicionar Aluno" << endl
              << "2) Adicionar Professor" << endl
@@ -26,21 +26,23 @@ void menu() {
              << "Escolha uma opcao: ";
         cin >> opcao;
 
-        if (opcao == 1) {
+        if (opcao == 1){
             cout << "Cadastro de aluno" << endl << "Digite o NUSP: ";
             cin >> nusp;
             cout << "Digite o nome (sem espacos): ";
             cin >> nome;
 
             Aluno* aluno = new Aluno(nusp, nome, 3); 
-            if (gerenciador->adicionarAluno(aluno)) {
+            if (gerenciador->adicionarAluno(aluno)){
                 cout << "Aluno adicionado com sucesso" << endl;
-            } else {
+            } 
+            else{
                 cout << "Erro ao adicionar aluno" << endl;
                 delete aluno;
             }
 
-        } else if (opcao == 2) {
+        } 
+        else if (opcao == 2){
             cout << "Cadastro de professor" << endl << "Digite o NUSP: ";
             cin >> nusp;
             cout << "Digite o nome (sem espacos): ";
@@ -49,19 +51,21 @@ void menu() {
             cin >> unidade;
 
             Professor* professor = new Professor(nusp, nome, unidade);
-            if (gerenciador->adicionarProfessor(professor)) {
+            if (gerenciador->adicionarProfessor(professor)){
                 cout << "Professor adicionado com sucesso" << endl;
-            } else {
+            } 
+            else{
                 cout << "Erro ao adicionar professor" << endl;
                 delete professor;
             }
 
-        } else if (opcao == 3) {
+        } 
+        else if (opcao == 3){
             int nuspAluno, nuspProfessor;
             cout << "Cadastro de bolsa" << endl << "Alunos cadastrados:" << endl;
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 10; i++){
                 Aluno* a = gerenciador->getAluno(i);
-                if (a != nullptr) {
+                if (a != nullptr){
                     cout << a->getNusp() << " - " << a->getNome() << endl;
                 }
             }
@@ -69,15 +73,15 @@ void menu() {
             cout << "Digite o NUSP do aluno: ";
             cin >> nuspAluno;
             Aluno* aluno = gerenciador->getAluno(nuspAluno);
-            if (!aluno) {
+            if (!aluno){
                 cout << "Aluno inexistente" << endl;
                 continue;
             }
 
             cout << "Professores cadastrados:" << endl;
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 10; i++){
                 Professor* p = gerenciador->getProfessor(i);
-                if (p != nullptr) {
+                if (p != nullptr){
                     cout << p->getNusp() << " - " << p->getNome() << " - " << p->getUnidade() << endl;
                 }
             }
@@ -85,7 +89,7 @@ void menu() {
             cout << "Digite o NUSP do professor: ";
             cin >> nuspProfessor;
             Professor* professor = gerenciador->getProfessor(nuspProfessor);
-            if (!professor) {
+            if (!professor){
                 cout << "Professor inexistente" << endl;
                 continue;
             }
@@ -100,41 +104,47 @@ void menu() {
             Data* dataFim = new Data(mesFim, anoFim);
             Bolsa* bolsa = new Bolsa(dataInicio, dataFim, professor);
 
-            if (aluno->adicionar(bolsa)) {
+            if (aluno->adicionar(bolsa)){
                 cout << "Bolsa cadastrada com sucesso" << endl;
-            } else {
+            } 
+            else{
                 cout << "Erro ao cadastrar bolsa" << endl;
             }
 
-        } else if (opcao == 4) {
+        } 
+        else if (opcao == 4){
             int nuspConsulta;
             cout << "Consulta de usuario" << endl << "Digite o NUSP: ";
             cin >> nuspConsulta;
 
             Aluno* aluno = gerenciador->getAluno(nuspConsulta);
-            if (aluno) {
+            if (aluno){
                 Bolsa** bolsas = aluno->getBolsas();
                 cout << "Aluno: " << aluno->getNome() << endl << "Bolsas: " << endl;
-                for (int i = 0; i < 3; i++) { 
-                    if (bolsas[i] != nullptr) {
+                for (int i = 0; i < 3; i++){ 
+                    if (bolsas[i] != nullptr){
                         cout << bolsas[i]->getInicio()->getMes() << "/" << bolsas[i]->getInicio()->getAno()
                              << " a " << bolsas[i]->getFim()->getMes() << "/" << bolsas[i]->getFim()->getAno()
                              << " - Orientador NUSP: " << bolsas[i]->getResponsavel()->getNusp() << endl;
                     }
                 }
-            } else {
+            } 
+            else{
                 Professor* professor = gerenciador->getProfessor(nuspConsulta);
-                if (professor) {
+                if (professor){
                     cout << "Professor: " << professor->getNome()
                          << ", Unidade: " << professor->getUnidade() << endl;
-                } else {
+                } 
+                else{
                     cout << "Usuario nao encontrado" << endl;
                 }
             }
 
-        } else if (opcao == 0) {
+        } 
+        else if (opcao == 0){
             terminarPrograma = true;
-        } else {
+        } 
+        else{
             cout << "Opcao invalida!" << endl;
         }
     }
